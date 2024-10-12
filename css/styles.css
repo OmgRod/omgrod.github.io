@@ -1,0 +1,74 @@
+/* Variables for light and dark mode */
+:root {
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --link-color: #1a73e8;
+    --header-color: #111;
+    --button-bg: #fff;
+    --button-text: #333;
+    --gray-filter: grayscale(100%);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    filter: var(--gray-filter);
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--header-color);
+    margin-bottom: 20px;
+}
+
+p, h2 {
+    margin: 10px 0;
+}
+
+nav.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+nav.social-links a:hover {
+    color: var(--header-color);
+}
+
+button#theme-toggle {
+    margin-top: 10px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-text);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button#theme-toggle:hover {
+    background-color: var(--button-text);
+    color: var(--button-bg);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    --background-color: #222;
+    --text-color: #f5f5f5;
+    --link-color: #76a9ea;
+    --header-color: #e5e5e5;
+    --button-bg: #333;
+    --button-text: #f5f5f5;
+    --gray-filter: grayscale(0%);
+}
