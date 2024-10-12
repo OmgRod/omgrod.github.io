@@ -1,74 +1,84 @@
-/* Variables for light and dark mode */
-:root {
-    --background-color: #f5f5f5;
-    --text-color: #333;
-    --link-color: #1a73e8;
-    --header-color: #111;
-    --button-bg: #fff;
-    --button-text: #333;
-    --gray-filter: grayscale(100%);
-}
-
-body {
-    font-family: Arial, sans-serif;
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    filter: var(--gray-filter);
-    transition: all 0.3s ease;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: var(--header-color);
-    margin-bottom: 20px;
-}
-
-p, h2 {
-    margin: 10px 0;
-}
-
-nav.social-links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: var(--link-color);
-    transition: color 0.3s ease;
-}
-
-nav.social-links a:hover {
-    color: var(--header-color);
-}
-
-button#theme-toggle {
-    margin-top: 10px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: 2px solid var(--button-text);
-    padding: 10px 20px;
-    cursor: pointer;
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light background */
+    color: #333; /* Dark text */
     transition: background-color 0.3s, color 0.3s;
 }
 
-button#theme-toggle:hover {
-    background-color: var(--button-text);
-    color: var(--button-bg);
+/* Container styles */
+.container {
+    max-width: 800px; /* Limit the width for better readability */
+    padding: 20px; /* Add some padding */
+    margin: auto; /* Center the container */
 }
 
-/* Dark mode styles */
-body.dark-mode {
-    --background-color: #222;
-    --text-color: #f5f5f5;
-    --link-color: #76a9ea;
-    --header-color: #e5e5e5;
-    --button-bg: #333;
-    --button-text: #f5f5f5;
-    --gray-filter: grayscale(0%);
+/* Header styles */
+h1 {
+    font-size: 2.5rem; /* Large font size for main title */
+    color: #111; /* Darker title color */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+}
+
+/* Subtitle styles */
+h2 {
+    font-size: 1.75rem; /* Slightly smaller than the main title */
+    color: #222; /* Medium-dark color for subtitles */
+    margin: 20px 0; /* Space around the subtitles */
+}
+
+/* Paragraph styles */
+p {
+    margin: 10px 0; /* Space above and below paragraphs */
+    line-height: 1.5; /* Increase line height for better readability */
+}
+
+/* Button styles for social media links */
+.social-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Default text color for links */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Button hover styles */
+.social-links a:hover {
+    color: #007bff; /* Change text color on hover */
+}
+
+/* Button styles */
+.btn {
+    display: inline-flex; /* Use flexbox for buttons */
+    align-items: center; /* Center icon and text vertically */
+    padding: 10px 15px; /* Padding inside buttons */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Button text size */
+}
+
+/* Margin between buttons */
+.m-2 {
+    margin: 10px; /* Margin around buttons */
+}
+
+/* Icon spacing */
+.btn i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Additional styling for responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Smaller title on smaller screens */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Smaller subtitles on smaller screens */
+    }
 }
