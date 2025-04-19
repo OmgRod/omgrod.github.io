@@ -1,36 +1,52 @@
 ---
 title: Welcome to OmgRod!
-description: This website is in maintenance. We'll be back soon...
+description: Gamer | Content Creator | Developer
 template: splash
 hero:
-  tagline: This website is in maintenance. We'll be back soon...
+  tagline: Gamer | Content Creator | Developer
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/logo.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Subscribe
+      link: https://www.youtube.com/@OmgRodYT
+      icon: youtube
+    - text: Look at my code
+      link: https://github.com/OmgRod
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
 
-## Next steps
+## Socials
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+<CardGrid>
+	<Card title="YouTube" icon="youtube" color="red">
+		<a href="https://www.youtube.com/@OmgRodYT" target="_blank">Follow on YouTube</a>
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Twitter/X" icon="twitter" color="blue">
+		<a href="https://twitter.com/0mgRod" target="_blank">Follow on Twitter/X</a>
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="Twitch" icon="twitch" color="purple">
+		<a href="https://www.twitch.tv/0mgrod" target="_blank">Watch on Twitch</a>
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="TikTok" icon="tiktok" color="black">
+		<a href="https://www.tiktok.com/@TheRealOmgRod" target="_blank">Watch on TikTok</a>
+	</Card>
+	<Card title="Discord" icon="discord" color="purple">
+		<a href="https://discord.gg/UtNP2yMk6p" target="_blank">Join Discord</a>
+	</Card>
+	<Card title="Ko-Fi" icon="heart" color="blue">
+		<a href="https://ko-fi.com/omgrod" target="_blank">Support on Ko-Fi</a>
+	</Card>
+	<Card title="GitHub" icon="github" color="gray">
+		<a href="https://github.com/OmgRod" target="_blank">View GitHub</a>
+	</Card>
+	<Card title="Bluesky" icon="blueSky" color="blue">
+		<a href="https://bsky.app/profile/omgrod.me" target="_blank">Follow on Bluesky</a>
+	</Card>
+	<Card title="itch.io" icon="puzzle" color="red">
+		<a href="https://omgrod.itch.io/" target="_blank">Browse itch.io</a>
 	</Card>
 </CardGrid>
