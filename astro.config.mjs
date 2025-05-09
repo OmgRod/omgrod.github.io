@@ -9,6 +9,16 @@ export default defineConfig({
 		starlight({
 			title: 'OmgRod',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			pagination: false,
+			// sidebar: [
+			// 	{
+			// 		label: 'Minecraft',
+			// 		slug: 'minecraft'
+			// 	},
+			// ]
+			components: {
+				SiteTitle: './src/starlightOverrides/SiteTitle.astro',
+			},
 		}),
 	],
 	vite: {
@@ -18,4 +28,5 @@ export default defineConfig({
 			}
 		}
 	},
+
 });
