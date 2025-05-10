@@ -1,8 +1,9 @@
 ---
 title: Minecraft Server
+description: Join OmgRod's Minecraft server on Java or Bedrock!
 template: splash
 hero:
-  tagline: play.omgrod.me
+  tagline: Available on Java and Bedrock!
 #   image:
     # file: ../../assets/logo.png
 #   actions:
@@ -14,3 +15,39 @@ hero:
 #       icon: external
 #       variant: minimal
 ---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Java">
+    <Steps>
+      <ol>
+        <li>
+          Enter the following server address:
+          ```
+          play.omgrod.me
+          ```
+        </li>
+      </ol>
+    </Steps>
+  </TabItem>
+
+  <TabItem label="Bedrock">
+    <Steps>
+      <ol>
+        <li>
+          Enter the following server address:
+          ```
+          play.omgrod.me
+          ```
+        </li>
+        <li>
+          Enter the following port:
+          ```
+          33123
+          ```
+        </li>
+      </ol>
+    </Steps>
+  </TabItem>
+</Tabs>
