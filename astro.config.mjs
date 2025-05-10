@@ -13,7 +13,7 @@ export default defineConfig({
 	site: "https://omgrod.me",
     integrations: [starlight({
         title: 'OmgRod',
-        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+        // social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/OmgRod/omgrod.github.io' }],
         pagination: false,
         // sidebar: [
         // 	{
@@ -27,7 +27,7 @@ export default defineConfig({
         }), sentry(), spotlightjs(), sitemap({
 			changefreq: 'always',
 			priority: 1,
-			
+
 		})],
     vite: {
         resolve: {
