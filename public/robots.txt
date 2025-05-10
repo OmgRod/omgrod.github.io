@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omgrod.me/sitemap-index.xml

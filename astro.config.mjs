@@ -6,8 +6,11 @@ import path from 'node:path';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+	site: "https://omgrod.me",
     integrations: [starlight({
         title: 'OmgRod',
         social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
@@ -21,7 +24,11 @@ export default defineConfig({
         components: {
             SiteTitle: './src/starlightOverrides/SiteTitle.astro',
         },
-		}), sentry(), spotlightjs()],
+        }), sentry(), spotlightjs(), sitemap({
+			changefreq: 'always',
+			priority: 1,
+			
+		})],
     vite: {
         resolve: {
             alias: {
