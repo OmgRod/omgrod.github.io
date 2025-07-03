@@ -15,6 +15,7 @@ export default defineConfig({
         title: 'OmgRod',
         // social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/OmgRod/omgrod.github.io' }],
         pagination: false,
+        pagefind: false,
         // sidebar: [
         // 	{
         // 		label: 'Minecraft',
@@ -36,5 +37,6 @@ export default defineConfig({
             }
         }
     },
+    
 
 });
