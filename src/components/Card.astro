@@ -3,17 +3,21 @@ import Icon from './Icon.astro';
 import type { StarlightIcon } from './Icons';
 
 interface Props {
-	icon?: StarlightIcon;
+	icon?: StarlightIcon | string;
 	title: string;
-    color: string;
+    color: string; // Can be a predefined color or a hex code
+    iconColor?: string; // Optional prop for icon-specific color
 }
 
-const { icon, title, color } = Astro.props;
+const { icon, title, color, iconColor } = Astro.props;
+const isImagePath = typeof icon === 'string' && (icon.endsWith('.svg') || icon.endsWith('.png'));
+const resolvedIconColor = iconColor || color || 'currentColor'; // Default to color or currentColor for SVG
 ---
 
 <article class="card sl-flex">
 	<p class="title sl-flex">
-		{icon && <Icon name={icon} class={`icon ${color}`} size="1.333em" />}
+		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color={resolvedIconColor} size="1.333em" />}
+		{isImagePath && <img src={icon} alt="icon" class="icon" style={`width: 1.333em; height: 1.333em; object-fit: contain; border: 1px solid ${color}; background-color: transparent;`} />}
 		<span set:html={title} />
 	</p>
 	<div class="body"><slot /></div>
@@ -42,46 +46,8 @@ const { icon, title, color } = Astro.props;
 		.card .icon {
 			padding: 0.2em;
 			border-radius: 0.25rem;
-		}
-
-        .card .icon.red {
-            border: 1px solid var(--sl-color-red);
-			background-color: var(--sl-color-red-low);
-        }
-
-        .card .icon.blue {
-            border: 1px solid var(--sl-color-blue);
-			background-color: var(--sl-color-blue-low);
-        }
-
-        .card .icon.black {
-            border: 1px solid var(--sl-color-white);
-			background-color: var(--sl-color-black);
-        }
-
-        .card .icon.green {
-            border: 1px solid var(--sl-color-green);
-			background-color: var(--sl-color-green-low);
-        }
-
-        .card .icon.orange {
-            border: 1px solid var(--sl-color-orange);
-			background-color: var(--sl-color-orange-low);
-        }
-
-        .card .icon.purple {
-            border: 1px solid var(--sl-color-purple);
-			background-color: var(--sl-color-purple-low);
-        }
-
-        .card .icon.gray {
-            border: 1px solid var(--sl-color-white);
-			background-color: var(--sl-color-gray-5);
-        }
-
-		.card .body {
-			margin: 0;
-			font-size: clamp(var(--sl-text-sm), calc(0.5rem + 1vw), var(--sl-text-body));
+			background-color: transparent; /* Ensure fill color is transparent */
+			filter: none; /* Remove invert filter to fix color inversion */
 		}
 	}
 </style>

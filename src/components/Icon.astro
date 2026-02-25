@@ -11,6 +11,7 @@ interface Props {
 
 const { name, label, size = '1em', color } = Astro.props;
 const a11yAttrs = label ? ({ 'aria-label': label } as const) : ({ 'aria-hidden': 'true' } as const);
+const resolvedColor = typeof color === 'string' ? color : 'currentColor'; // Ensure color is a valid string
 
 /**
  * The fragment around the element is used as a workaround to avoid a trailing whitespace in the output.
@@ -25,12 +26,13 @@ const a11yAttrs = label ? ({ 'aria-label': label } as const) : ({ 'aria-hidden':
 		width="16"
 		height="16"
 		viewBox="0 0 24 24"
-		fill="currentColor"
+		fill="none"
+		style={`color: ${resolvedColor};`}
 		set:html={Icons[name]}
 	/>
 </>
 
-<style define:vars={{ 'sl-icon-color': color, 'sl-icon-size': size }}>
+<style define:vars={{ 'sl-icon-color': resolvedColor, 'sl-icon-size': size }}>
 	@layer starlight.components {
 		svg {
 			color: var(--sl-icon-color);
