@@ -5,20 +5,24 @@ import type { StarlightIcon } from './Icons';
 interface Props {
 	icon?: StarlightIcon | string;
 	title: string;
-    color: string; // Can be a predefined color or a hex code
-    iconColor?: string; // Optional prop for icon-specific color
+    color: string;
+    iconColor?: string;
 }
 
 const { icon, title, color, iconColor } = Astro.props;
 const isImagePath = typeof icon === 'string' && (icon.endsWith('.svg') || icon.endsWith('.png'));
-const resolvedIconColor = iconColor || color || 'currentColor'; // Default to color or currentColor for SVG
+const resolvedIconColor = iconColor || color || 'white';
 ---
 
 <article class="card sl-flex">
 	<p class="title sl-flex">
-		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color={resolvedIconColor} size="1.333em" />}
-		{isImagePath && <img src={icon} alt="icon" class="icon" style={`width: 1.333em; height: 1.333em; object-fit: contain; border: 1px solid ${color}; background-color: transparent;`} />}
-		<span set:html={title} />
+		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color="white" size="1em" />}
+		{isImagePath && (
+			<span class="icon-wrapper" style={`border: 1px solid ${color}; border-radius: 0.25rem; padding: 0.1em; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; margin-right: 0.3em;`}>
+				<img src={icon} alt="icon" class="icon" style={`width: 1em; height: 1em; object-fit: contain; filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);`} />
+			</span>
+		)}
+		<span class="title-text" set:html={title} style="font-size: 1.2em; font-weight: 500;" />
 	</p>
 	<div class="body"><slot /></div>
 </article>
@@ -36,18 +40,34 @@ const resolvedIconColor = iconColor || color || 'currentColor'; // Default to co
         }
 
 		.title {
-			font-weight: 600;
-			font-size: var(--sl-text-h4);
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+			font-weight: 500;
+			font-size: 1.2em;
 			color: var(--sl-color-white);
 			line-height: var(--sl-line-height-headings);
-			gap: 1rem;
+		}
+		.icon-wrapper {
+			border-radius: 0.25rem;
+			padding: 0.1em;
+			background-color: transparent;
+			display: inline-flex;
 			align-items: center;
+			justify-content: center;
+			width: 1.5em;
+			height: 1.5em;
+			margin-right: 0.3em;
 		}
 		.card .icon {
-			padding: 0.2em;
-			border-radius: 0.25rem;
-			background-color: transparent; /* Ensure fill color is transparent */
-			filter: none; /* Remove invert filter to fix color inversion */
+			width: 1em;
+			height: 1em;
+			object-fit: contain;
+			filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);
+		}
+		.title-text {
+			font-size: 1.2em;
+			font-weight: 500;
 		}
 	}
 </style>

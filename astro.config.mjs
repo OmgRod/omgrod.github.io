@@ -13,6 +13,7 @@ export default defineConfig({
 	site: "https://omgrod.me",
     integrations: [starlight({
         title: 'OmgRod',
+        favicon: '/favicon.png',
         // social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/OmgRod/omgrod.github.io' }],
         pagination: false,
         pagefind: false,
