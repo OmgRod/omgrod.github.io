@@ -8,21 +8,14 @@ import spotlightjs from '@spotlightjs/astro';
 
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
 	site: "https://omgrod.me",
     integrations: [starlight({
         title: 'OmgRod',
         favicon: '/favicon.png',
-        // social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/OmgRod/omgrod.github.io' }],
+        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/OmgRod/omgrod.github.io' }],
         pagination: false,
         pagefind: false,
-        // sidebar: [
-        // 	{
-        // 		label: 'Minecraft',
-        // 		slug: 'minecraft'
-        // 	},
-        // ]
         components: {
             SiteTitle: './src/starlightOverrides/SiteTitle.astro',
         },
@@ -38,6 +31,4 @@ export default defineConfig({
             }
         }
     },
-    
-
 });

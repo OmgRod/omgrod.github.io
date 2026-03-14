@@ -1,7 +1,12 @@
 [
   {
     "id": 1,
-    "text": "Minecraft Server",
+    "text": "Rod SMP (dead)",
     "link": "/minecraft"
+  },
+  {
+    "id": 2,
+    "text": "Projects",
+    "link": "/projects"
   }
 ]
