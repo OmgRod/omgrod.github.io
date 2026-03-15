@@ -14,7 +14,7 @@ template: splash
 hero:
   tagline: Allows mods to easily add custom stats into the icon kit.
   image:
-    html: '<img src="/projects/logos/stats-display-api.png" alt="Stats Display API logo" style="width:100%;height:100%;object-fit:contain;" />'
+        html: '<img src="/projects/logos/stats-display-api.png" alt="Stats Display API logo" style="width:100%;height:100%;object-fit:contain;" loading="eager" decoding="async" />'
   actions:
     - text: Install
       link: https://geode-sdk.org/mods/capeling.garage-stats-menu
@@ -27,11 +27,11 @@ Allows mods to easily add custom stats into the icon kit
 Make sure to declare Stats Display API as a dependency in your 'mod.json'
 ```json
 "dependencies": [
-	{
-		"id": "capeling.garage-stats-menu",
-		"version": ">=v1.0.1",
-		"importance": "required"
-	}
+    {
+        "id": "capeling.garage-stats-menu",
+        "version": ">=v1.0.1",
+        "importance": "required"
+    }
 ]
 ```
 
@@ -55,21 +55,21 @@ To add a displayed stat you simply need to create a item through the API and the
 This code adds your current fire shards to the display
 ```cpp
 class $modify(GJGarageLayer) {
-	bool init() {
-		if (!GJGarageLayer::init())
-			return false;
+    bool init() {
+        if (!GJGarageLayer::init())
+            return false;
 
-		auto statMenu = this->getChildByID("capeling.garage-stats-menu/stats-menu");
+        auto statMenu = this->getChildByID("capeling.garage-stats-menu/stats-menu");
 
-		auto myStatItem = StatsDisplayAPI::getNewItem("fire-shards"_spr, CCSprite::createWithSpriteFrameName("fireShardSmall_001.png"), GameStatsManager::sharedState()->getStat("16"), 0.8f);
+        auto myStatItem = StatsDisplayAPI::getNewItem("fire-shards"_spr, CCSprite::createWithSpriteFrameName("fireShardSmall_001.png"), GameStatsManager::sharedState()->getStat("16"), 0.8f);
 
-		if (statMenu) {
-			statMenu->addChild(myStatItem);
-			statMenu->updateLayout();
-		}
+        if (statMenu) {
+            statMenu->addChild(myStatItem);
+            statMenu->updateLayout();
+        }
 
-		return true;
-	}
+        return true;
+    }
 };
 ```
 
@@ -77,8 +77,8 @@ If in any case the stats menu does not exist, you should check to make sure that
 ```cpp
 auto statMenu = this->getChildByID("capeling.garage-stats-menu/stats-menu");
 if (statMenu) {
-	statMenu->addChild(myStatItem);
-	statMenu->updateLayout();
+    statMenu->addChild(myStatItem);
+    statMenu->updateLayout();
 }
 ```
 

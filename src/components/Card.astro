@@ -19,7 +19,7 @@ const resolvedIconColor = iconColor || color || 'white';
 		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color="white" size="1em" />}
 		{isImagePath && (
 			<span class="icon-wrapper" style={`border: 1px solid ${color}; border-radius: 0.25rem; padding: 0.1em; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; margin-right: 0.3em;`}>
-				<img src={icon} alt="icon" class="icon" style={`width: 1em; height: 1em; object-fit: contain; filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);`} />
+				<img src={icon} alt="icon" loading="lazy" decoding="async" class="icon" style={`width: 1em; height: 1em; object-fit: contain; filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);`} />
 			</span>
 		)}
 		<span class="title-text" set:html={title} style="font-size: 1.2em; font-weight: 500;" />

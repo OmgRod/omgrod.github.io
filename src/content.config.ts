@@ -8,7 +8,7 @@ export const collections = {
 		schema: docsSchema({
 			extend: z.object({
 				projectId: z.string().min(1).optional(),
-				projectTags: z.array(z.enum(['geode-mod', 'website', 'program'])).optional(),
+					projectTags: z.array(z.enum(['geode-mod', 'website', 'program', 'game', 'discord-bot'])).optional(),
 				projectThumbnail: z.string().min(1).optional(),
 				projectIcon: z.string().min(1).optional(),
 				projectBadges: z.array(

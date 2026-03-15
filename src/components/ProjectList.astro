@@ -1,15 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import { Tabs, TabItem, Badge } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
 
 const entries = await getCollection('docs');
-const tabLabels = ['All', 'Geode Mods', 'Websites', 'Programs', 'Misc.'] as const;
+const tabLabels = ['All', 'Geode Mods', 'Websites', 'Programs', 'Games', 'Discord Bots', 'Misc.'] as const;
 const canonicalTagByTab = {
 	'Geode Mods': 'geode-mod',
 	Websites: 'website',
 	Programs: 'program',
+	Games: 'game',
+	'Discord Bots': 'discord-bot',
 } as const;
-const knownTags = new Set(['geode-mod', 'website', 'program']);
+const knownTags = new Set(['geode-mod', 'website', 'program', 'game', 'discord-bot']);
 
 const normalizeTag = (value: string) => value.trim().toLowerCase();
 
@@ -36,6 +39,20 @@ const toCanonicalTag = (value: string) => {
 
 	if (normalized === 'program' || normalized === 'programs') {
 		return 'program';
+	}
+
+	if (normalized === 'game' || normalized === 'games') {
+		return 'game';
+	}
+
+	if (
+		normalized === 'discord-bot' ||
+		normalized === 'discord bots' ||
+		normalized === 'discord bot' ||
+		normalized === 'discord_bot' ||
+		normalized === 'discordbot'
+	) {
+		return 'discord-bot';
 	}
 
 	return normalized;
@@ -95,15 +112,15 @@ const projectsForTab = (label: (typeof tabLabels)[number]) => {
 						</p>
 					) : (
 						<ul class="project-items">
-							{tabProjects.map((project) => (
+							{tabProjects.map((project, index) => (
 								<li>
 									<a class="project-item" href={project.href}>
 										{(project.thumbnail || project.icon) && (
 											<div class="media" aria-hidden="true">
 												{project.thumbnail ? (
-													<img src={project.thumbnail} alt="" loading="lazy" decoding="async" />
+													<Image src={project.thumbnail} alt="" width={52} height={52} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
 												) : project.icon?.endsWith('.svg') || project.icon?.endsWith('.png') || project.icon?.endsWith('.jpg') || project.icon?.endsWith('.jpeg') || project.icon?.endsWith('.webp') ? (
-													<img src={project.icon} alt="" loading="lazy" decoding="async" />
+													<Image src={project.icon} alt="" width={52} height={52} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
 												) : (
 													<span>{project.icon}</span>
 												)}

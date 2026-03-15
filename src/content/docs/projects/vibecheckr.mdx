@@ -1,0 +1,69 @@
+---
+title: VibeCheckr
+projectTags: ["discord-bot"]
+description: A powerful Discord bot that checks the vibe using transformer-based models.
+projectId: vibecheckr
+projectThumbnail: /projects/logos/vibecheckr.png
+projectBadges:
+    - text: Discord Bot
+      variant: default
+    - text: Python
+      variant: tip
+
+template: splash
+hero:
+  tagline: A powerful Discord bot that checks the vibe using transformer-based models.
+  image:
+    html: '<img src="/projects/logos/vibecheckr.png" alt="VibeCheckr logo" style="width:100%;height:100%;object-fit:contain;" loading="eager" decoding="async" />'
+  actions:
+    - text: Get bot
+      link: https://discord.com/oauth2/authorize?client_id=1399694856028291082&permissions=265280&integration_type=0&scope=bot+applications.commands
+      icon: external
+    - text: Browse code
+      link: https://github.com/OmgRod/VibeCheckr
+      icon: external
+      variant: minimal
+---
+
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+A powerful Discord bot that checks the vibe using transformer-based models. Built with `discord.py`, `transformers`, and custom emotion detection logic.
+
+## Features
+
+- Emotion detection powered by HuggingFace models
+- Fast and async-ready with `aiohttp`
+- Easily configurable via `.env`
+- Dashboard support
+
+## Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/OmgRod/VibeCheckr.git
+   cd vibecheckr
+   ```
+
+2. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Create a `.env` file with your bot token:
+
+    ```bash
+    BOT_TOKEN=your_token_here
+    ```
+
+4. Run the bot:
+
+    ```bash
+    python bot.py
+    ```
+
+## License
+
+MIT License. See [LICENSE](https://raw.githubusercontent.com/OmgRod/VibeCheckr/refs/heads/main/LICENSE).
