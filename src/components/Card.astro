@@ -7,19 +7,21 @@ interface Props {
 	title: string;
     color: string;
     iconColor?: string;
+    iconColorLight?: string;
 }
 
-const { icon, title, color, iconColor } = Astro.props;
+const { icon, title, color, iconColor, iconColorLight } = Astro.props;
 const isImagePath = typeof icon === 'string' && (icon.endsWith('.svg') || icon.endsWith('.png'));
 const resolvedIconColor = iconColor || color || 'white';
+const resolvedIconColorLight = iconColorLight || resolvedIconColor;
 ---
 
-<article class="card sl-flex">
+<article class="card sl-flex" style={`--card-icon-color: ${resolvedIconColor}; --card-icon-color-light: ${resolvedIconColorLight};`}>
 	<p class="title sl-flex">
-		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color="white" size="1em" />}
+		{icon && !isImagePath && <Icon name={icon as StarlightIcon} class="icon" color="var(--card-icon-color)" size="1em" />}
 		{isImagePath && (
 			<span class="icon-wrapper" style={`border: 1px solid ${color}; border-radius: 0.25rem; padding: 0.1em; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; margin-right: 0.3em;`}>
-				<img src={icon} alt="icon" loading="lazy" decoding="async" class="icon" style={`width: 1em; height: 1em; object-fit: contain; filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);`} />
+				<span class="icon" role="img" aria-label={`${title} icon`} style={`--icon-image: url("${icon}");`} />
 			</span>
 		)}
 		<span class="title-text" set:html={title} style="font-size: 1.2em; font-weight: 500;" />
@@ -62,8 +64,18 @@ const resolvedIconColor = iconColor || color || 'white';
 		.card .icon {
 			width: 1em;
 			height: 1em;
-			object-fit: contain;
-			filter: brightness(0) saturate(100%) hue-rotate(var(--icon-hue, 0deg)) invert(1);
+			color: var(--card-icon-color);
+		}
+		.card .icon-wrapper .icon {
+			background-color: var(--card-icon-color);
+			mask: var(--icon-image) center / contain no-repeat;
+			-webkit-mask: var(--icon-image) center / contain no-repeat;
+		}
+		:global(html[data-theme='light']) .card .icon {
+			color: var(--card-icon-color-light);
+		}
+		:global(html[data-theme='light']) .card .icon-wrapper .icon {
+			background-color: var(--card-icon-color-light);
 		}
 		.title-text {
 			font-size: 1.2em;
